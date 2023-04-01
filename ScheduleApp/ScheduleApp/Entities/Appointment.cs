@@ -8,8 +8,8 @@
         public int ServiceId { get; set; }
         public virtual Service Service { get; set; }
         public string? Remarks { get; set; }
-        public int ClientId { get; set; }
-        public virtual Client Client { get; set; }
+        public int ClientInformationsId { get; set; }
+        public virtual ClientInformations ClientInformations { get; set; }
     }
 }
 

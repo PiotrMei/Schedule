@@ -1,6 +1,6 @@
 ﻿namespace ScheduleApp.Entities
 {
-    public class Client
+    public class ClientInformations
     {
         public int Id { get; set; }
         public string Name { get; set; }

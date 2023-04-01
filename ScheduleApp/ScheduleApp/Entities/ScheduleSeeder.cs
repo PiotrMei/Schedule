@@ -37,7 +37,7 @@
                 {
                     AppointmentStart = new DateTime(2023,04,11,12,30,00),
                     AppointmentEnd = new DateTime(2023,04,11,13,30,00),
-                    Client = new Client()
+                    ClientInformations = new ClientInformations()
                     {
                         Name= "Janina",
                         LastName="Kciuk",
@@ -56,7 +56,7 @@
                 {
                     AppointmentStart = new DateTime(2023,04,11,14,00,00),
                     AppointmentEnd = new DateTime(2023,04,11,15,30,00),
-                    Client = new Client()
+                    ClientInformations = new ClientInformations()
                     {
                         Name= "Barbara",
                         LastName="Kania",
@@ -75,7 +75,7 @@
                 {
                     AppointmentStart = new DateTime(2023,04,12,14,00,00),
                     AppointmentEnd = new DateTime(2023,04,12,15,30,00),
-                    Client = new Client()
+                    ClientInformations = new ClientInformations()
                     {
                         Name= "Małgorzata",
                         LastName="Kowalska",
@@ -94,7 +94,7 @@
                 {
                     AppointmentStart = new DateTime(2023,04,13,14,00,00),
                     AppointmentEnd = new DateTime(2023,04,13,15,30,00),
-                    Client = new Client()
+                    ClientInformations = new ClientInformations()
                     {
                         Name= "Aneta",
                         LastName="Nowak",

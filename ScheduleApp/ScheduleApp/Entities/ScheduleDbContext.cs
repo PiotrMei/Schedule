@@ -10,22 +10,15 @@ namespace ScheduleApp.Entities
         }
 
         public DbSet<Appointment> Appointments { get; set; }
-        public DbSet<Client> Clients { get; set; }
+        public DbSet<ClientInformations> Clients { get; set; }
         public DbSet<Service> Services { get; set; }
         public DbSet<Adress> Adresses { get; set; }
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            modelBuilder.Entity<Appointment>()
-                .Property(a => a.Service)
-                .IsRequired();
 
             modelBuilder.Entity<Appointment>()
-                .Property(a => a.Client)
-                .IsRequired();
-
-            modelBuilder.Entity<Appointment>()
-                .Property(a => a.AppointmentEnd)
+                .Property(a => a.AppointmentStart)
                 .IsRequired();
 
             modelBuilder.Entity<Appointment>()
@@ -36,29 +29,21 @@ namespace ScheduleApp.Entities
                 .Property(a => a.Remarks)
                 .IsRequired(false);
 
-            modelBuilder.Entity<Client>()
-                .Property(a => a.Adress)
-                .IsRequired();
-
-            modelBuilder.Entity<Client>()
+            modelBuilder.Entity<ClientInformations>()
                 .Property(a => a.Name)
                 .IsRequired()
                 .HasMaxLength(25);
 
-            modelBuilder.Entity<Client>()
+            modelBuilder.Entity<ClientInformations>()
                 .Property(a => a.LastName)
                 .IsRequired()
                 .HasMaxLength(25);
 
-            modelBuilder.Entity<Client>()
+            modelBuilder.Entity<ClientInformations>()
                 .Property(a => a.PhoneNumber)
                 .IsRequired();
-                
-            modelBuilder.Entity<Client>()
-                .Property(a => a.Adress)
-                .IsRequired();
 
-            modelBuilder.Entity<Client>()
+            modelBuilder.Entity<ClientInformations>()
                 .Property(a => a.Remarks)
                 .IsRequired(false);
 
@@ -90,9 +75,6 @@ namespace ScheduleApp.Entities
                 .Property(a => a.Number)
                 .IsRequired();
 
-            modelBuilder.Entity<Adress>()
-                .Property(a => a.Client)
-                .IsRequired();
         }
     }
 }
