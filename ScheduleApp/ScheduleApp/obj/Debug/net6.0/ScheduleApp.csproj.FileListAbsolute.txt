@@ -83,3 +83,5 @@ D:\kurs\Schedule\ScheduleApp\ScheduleApp\obj\Debug\net6.0\refint\ScheduleApp.dll
 D:\kurs\Schedule\ScheduleApp\ScheduleApp\obj\Debug\net6.0\ScheduleApp.pdb
 D:\kurs\Schedule\ScheduleApp\ScheduleApp\obj\Debug\net6.0\ScheduleApp.genruntimeconfig.cache
 D:\kurs\Schedule\ScheduleApp\ScheduleApp\obj\Debug\net6.0\ref\ScheduleApp.dll
+D:\kurs\Schedule\ScheduleApp\ScheduleApp\bin\Debug\net6.0\AutoMapper.dll
+D:\kurs\Schedule\ScheduleApp\ScheduleApp\bin\Debug\net6.0\AutoMapper.Extensions.Microsoft.DependencyInjection.dll
