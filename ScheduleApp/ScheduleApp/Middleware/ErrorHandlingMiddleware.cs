@@ -16,6 +16,11 @@ namespace ScheduleApp.Middleware
                 context.Response.StatusCode = 404;
                 await context.Response.WriteAsync(notfound.Message);
             }
+            catch (ForbiddenException forbidden)
+            {
+                context.Response.StatusCode = 403;
+                await context.Response.WriteAsync(forbidden.Message);
+            }
             catch (Exception)
             {
                 context.Response.StatusCode = 500;

@@ -30,10 +30,13 @@ namespace ScheduleApp.CommandHandler
             {
                 throw new NotFoundException("Service not found");
             }
+            TermValidator.Validate(appointment,_context);
             _context.Add(appointment);
             _context.SaveChanges();
             return Task.FromResult(Unit.Value);
 
         }
+
+        
     }
 }
