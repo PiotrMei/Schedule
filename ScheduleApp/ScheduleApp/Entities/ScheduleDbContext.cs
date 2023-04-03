@@ -53,7 +53,7 @@ namespace ScheduleApp.Entities
 
             modelBuilder.Entity<Service>()
                 .Property(a => a.Price)
-                .IsRequired();            
+                .IsRequired();
 
             modelBuilder.Entity<Service>()
                 .Property(a => a.Description)

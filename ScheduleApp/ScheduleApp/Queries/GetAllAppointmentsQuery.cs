@@ -4,7 +4,7 @@ using ScheduleApp.Models;
 
 namespace ScheduleApp.Queries
 {
-    public class GetAllAppointmentsQuery:IRequest<List<AppointmentsDto>>
+    public class GetAllAppointmentsQuery : IRequest<List<AppointmentsDto>>
     {
     }
 }

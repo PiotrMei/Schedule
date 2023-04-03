@@ -4,7 +4,6 @@ using Microsoft.EntityFrameworkCore;
 using ScheduleApp.Entities;
 using ScheduleApp.Models;
 using ScheduleApp.Queries;
-using System.Linq;
 
 namespace ScheduleApp.QueryHandlers
 {
@@ -15,18 +14,18 @@ namespace ScheduleApp.QueryHandlers
 
         public GetAllAppointmentsQueryHandler(ScheduleDbContext context, IMapper mapper)
         {
-            _context = context; 
-            _mapper = mapper;   
+            _context = context;
+            _mapper = mapper;
         }
         public Task<List<AppointmentsDto>> Handle(GetAllAppointmentsQuery request, CancellationToken cancellationToken)
         {
             var appointments = _context.Appointments
-                .Include(a =>a.ClientInformations)
-                .Include(a =>a.Service)
-                .Include(a =>a.ClientInformations.Adress)
+                .Include(a => a.ClientInformations)
+                .Include(a => a.Service)
+                .Include(a => a.ClientInformations.Adress)
                 .ToList();
             var appointmentsDto = _mapper.Map<List<AppointmentsDto>>(appointments).ToList();
-             
+
             return Task.FromResult(appointmentsDto);
         }
     }

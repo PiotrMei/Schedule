@@ -3,7 +3,7 @@ using ScheduleApp.Entities;
 
 namespace ScheduleApp.Models
 {
-    public class ScheduleMappingProfile:Profile
+    public class ScheduleMappingProfile : Profile
     {
         public ScheduleMappingProfile()
         {
@@ -19,17 +19,6 @@ namespace ScheduleApp.Models
                 .ForMember(m => m.LastName, c => c.MapFrom(d => d.ClientInformations.LastName))
                 .ForMember(m => m.ClientRemarks, c => c.MapFrom(d => d.ClientInformations.Remarks))
                 .ForMember(m => m.PhoneNumber, c => c.MapFrom(d => d.ClientInformations.PhoneNumber));
-
-
-
-
-
-
-
-
-
-
-
         }
     }
 }
