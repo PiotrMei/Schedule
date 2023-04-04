@@ -5,7 +5,7 @@ namespace ScheduleApp.CommandHandler
     public class TermValidator
     {
         //public static void Validate(Appointment appointment, ScheduleDbContext _context)
-        public static bool Validate(IAppointment inputappointment, List<Appointment> appointments)
+        public static bool Validate(IAppointment inputappointment, IEnumerable<IAppointment> appointments)
 
         {
             if (inputappointment.AppointmentStart == null) return false;

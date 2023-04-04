@@ -39,6 +39,6 @@ namespace ScheduleApp.CommandHandler
 
         }
 
-        
+
     }
 }
