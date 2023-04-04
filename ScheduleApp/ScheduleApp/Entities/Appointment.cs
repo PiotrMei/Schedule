@@ -1,6 +1,6 @@
 ﻿namespace ScheduleApp.Entities
 {
-    public class Appointment
+    public class Appointment : IAppointment
     {
         public int Id { get; set; }
         public DateTime AppointmentStart { get; set; }

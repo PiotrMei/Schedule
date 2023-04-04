@@ -7,7 +7,7 @@ namespace ScheduleApp.CommandHandler
 {
     public class DeleteAppointmentByIdCommandHandler : IRequestHandler<DeleteAppointmentByIdCommand, Unit>
     {
-        ScheduleDbContext _context;
+        private readonly ScheduleDbContext _context;
         public DeleteAppointmentByIdCommandHandler(ScheduleDbContext context)
         {
             _context = context;

@@ -30,7 +30,9 @@ namespace ScheduleApp.CommandHandler
             {
                 throw new NotFoundException("Service not found");
             }
-            TermValidator.Validate(appointment,_context);
+            List<Appointment> appointments = _context.Appointments.ToList();
+            var validationrResult = TermValidator.Validate(appointment, appointments);
+            if (validationrResult == false) throw new FormatException("incorrect input");
             _context.Add(appointment);
             _context.SaveChanges();
             return Task.FromResult(Unit.Value);
