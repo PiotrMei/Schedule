@@ -2,10 +2,11 @@
 using ScheduleApp.Command;
 using ScheduleApp.Entities;
 using ScheduleApp.Exceptions;
+using ScheduleApp.Primitives;
 
 namespace ScheduleApp.CommandHandler
 {
-    public class DeleteAppointmentByIdCommandHandler : IRequestHandler<DeleteAppointmentByIdCommand, Unit>
+    internal class DeleteAppointmentByIdCommandHandler : ICommandHandler<DeleteAppointmentByIdCommand, Unit>
     {
         private readonly ScheduleDbContext _context;
         public DeleteAppointmentByIdCommandHandler(ScheduleDbContext context)

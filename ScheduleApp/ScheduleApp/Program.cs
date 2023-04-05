@@ -1,5 +1,6 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
+using ScheduleApp.CommandHandler;
 using ScheduleApp.Entities;
 using ScheduleApp.Middleware;
 using System.Reflection;
@@ -18,7 +19,7 @@ builder.Services.AddDbContext<ScheduleDbContext>(options => options.UseSqlServer
 builder.Services.AddScoped<ScheduleSeeder>();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
-
+builder.Services.AddScoped<ITermsValidator, TermValidator>();
 
 var app = builder.Build();
 
@@ -35,7 +36,7 @@ app.UseAuthorization();
 
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetService<ScheduleSeeder>();
-seeder.Seed();
+//seeder.Seed();
 
 app.MapControllers();
 

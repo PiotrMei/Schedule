@@ -1,8 +1,9 @@
 ﻿using MediatR;
+using ScheduleApp.Primitives;
 
 namespace ScheduleApp.Command
 {
-    public record DeleteAppointmentByIdCommand(int appointmentId) : IRequest<Unit>
+    public record DeleteAppointmentByIdCommand(int appointmentId) : ICommand<Unit>
     {
     }
 }

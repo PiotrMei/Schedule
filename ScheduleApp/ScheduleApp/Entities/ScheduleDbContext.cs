@@ -2,7 +2,7 @@
 
 namespace ScheduleApp.Entities
 {
-    public class ScheduleDbContext : DbContext
+    internal class ScheduleDbContext : DbContext
     {
         public ScheduleDbContext(DbContextOptions<ScheduleDbContext> options) : base(options)
         {
@@ -58,23 +58,6 @@ namespace ScheduleApp.Entities
             modelBuilder.Entity<Service>()
                 .Property(a => a.Description)
                 .IsRequired(false);
-
-            modelBuilder.Entity<Adress>()
-                .Property(a => a.Street)
-                .IsRequired();
-
-            modelBuilder.Entity<Adress>()
-                .Property(a => a.PostalCode)
-                .IsRequired();
-
-            modelBuilder.Entity<Adress>()
-                .Property(a => a.City)
-                .IsRequired();
-
-            modelBuilder.Entity<Adress>()
-                .Property(a => a.Number)
-                .IsRequired();
-
         }
     }
 }

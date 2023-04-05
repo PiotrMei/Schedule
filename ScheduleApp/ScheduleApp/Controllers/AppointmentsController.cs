@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ScheduleApp.Command;
-using ScheduleApp.Entities;
+using ScheduleApp.Models;
 using ScheduleApp.Queries;
 
 namespace ScheduleApp.Controllers
@@ -17,25 +17,24 @@ namespace ScheduleApp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Appointment>>> GetAllAppointments()
+        public async Task<ActionResult<List<AppointmentsDto>>> GetAllAppointments(CancellationToken cancellationToken)
         {
             var request = new GetAllAppointmentsQuery();
             var response = await _mediator.Send(request);
             return Ok(response);
         }
+
         [HttpPost]
-        public async Task<ActionResult> CreateAppointment([FromBody] CreateAppointmentCommand createAppointmentCommand)
+        public async Task<ActionResult> CreateAppointment([FromBody] CreateAppointment.Command createAppointmentCommand)
         {
-            var request = new CreateAppointmentCommand(createAppointmentCommand.clientInformationsId,
-                createAppointmentCommand.serviceId, createAppointmentCommand.appointmentStart,
-                createAppointmentCommand.AppointmentEnd, createAppointmentCommand.Remarks);
-            await _mediator.Send(request);
-            return Created("api/Appointment",null);
+            await _mediator.Send(createAppointmentCommand);
+            return Created("api/Appointment", null);
         }
-        [HttpDelete]
-        public async Task<ActionResult> DeleteAppointment([FromQuery] int appointemtID)
+
+        [HttpDelete("{appointemtId}")]
+        public async Task<ActionResult> DeleteAppointment([FromRoute] int appointemtId)
         {
-            var request = new DeleteAppointmentByIdCommand(appointemtID);
+            var request = new DeleteAppointmentByIdCommand(appointemtId);
             await _mediator.Send(request);
             return NoContent();
         }

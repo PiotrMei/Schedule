@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using ScheduleApp.Entities;
 using ScheduleApp.Models;
+using ScheduleApp.Primitives;
 
 namespace ScheduleApp.Queries
 {
-    public class GetAllAppointmentsQuery : IRequest<List<AppointmentsDto>>
+    public class GetAllAppointmentsQuery : IQuery<List<AppointmentsDto>>
     {
     }
 }

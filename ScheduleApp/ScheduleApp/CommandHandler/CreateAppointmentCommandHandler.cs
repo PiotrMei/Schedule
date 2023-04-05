@@ -1,44 +1,43 @@
-﻿using MediatR;
-using ScheduleApp.Command;
+﻿using ScheduleApp.Command;
 using ScheduleApp.Entities;
 using ScheduleApp.Exceptions;
+using ScheduleApp.Primitives;
 
 namespace ScheduleApp.CommandHandler
 {
-    public class CreateAppointmentCommandHandler : IRequestHandler<CreateAppointmentCommand, Unit>
+    internal class CreateAppointmentCommandHandler : ICommandHandler<CreateAppointment.Command, int>
     {
         private readonly ScheduleDbContext _context;
-        public CreateAppointmentCommandHandler(ScheduleDbContext context)
+        private readonly ITermsValidator _termsValidator;
+
+        public CreateAppointmentCommandHandler(ScheduleDbContext context, ITermsValidator termsValidator)
         {
-            _context = context;
+            _context = context ?? throw new ArgumentNullException(nameof(context));
+            _termsValidator = termsValidator;
         }
-        public Task<Unit> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateAppointment.Command request, CancellationToken cancellationToken)
         {
-            Appointment appointment = new Appointment()
-            {
-                AppointmentStart = request.appointmentStart,
-                AppointmentEnd = request.AppointmentEnd,
-                Remarks = request.Remarks,
-                ClientInformations = _context.Clients.FirstOrDefault(a => a.Id == request.clientInformationsId),
-                Service = _context.Services.FirstOrDefault(a => a.Id == request.serviceId)
-            };
-            if (appointment.ClientInformations == null)
-            {
+            var client = _context.Clients.FirstOrDefault(a => a.Id == request.ClientInformationsId);
+            if (client is null)
                 throw new NotFoundException("Client not found");
-            }
-            if (appointment.Service == null)
-            {
+
+            var service = _context.Services.First(a => a.Id == request.ServiceId);
+            if (service is null)
                 throw new NotFoundException("Service not found");
-            }
-            List<Appointment> appointments = _context.Appointments.ToList();
-            var validationrResult = TermValidator.Validate(appointment, appointments);
-            if (validationrResult == false) throw new FormatException("incorrect input");
-            _context.Add(appointment);
-            _context.SaveChanges();
-            return Task.FromResult(Unit.Value);
 
+            var appointment = await Appointment.Create(
+                _termsValidator,
+                request.AppointmentStart,
+                request.AppointmentEnd,
+                service.Id,
+                request.Remarks,
+                client.Id,
+                cancellationToken);
+            
+            await _context.AddAsync(appointment, cancellationToken);
+            await _context.SaveChangesAsync(cancellationToken);
+           
+            return appointment.Id;
         }
-
-
     }
 }

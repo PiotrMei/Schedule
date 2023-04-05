@@ -1,6 +1,6 @@
 ﻿namespace ScheduleApp.Entities
 {
-    public class Adress
+    internal class Adress
     {
         public int Id { get; set; }
         public string City { get; set; }

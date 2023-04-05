@@ -1,13 +1,13 @@
 ﻿using AutoMapper;
-using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ScheduleApp.Entities;
 using ScheduleApp.Models;
+using ScheduleApp.Primitives;
 using ScheduleApp.Queries;
 
 namespace ScheduleApp.QueryHandlers
 {
-    public class GetAllAppointmentsQueryHandler : IRequestHandler<GetAllAppointmentsQuery, List<AppointmentsDto>>
+    internal class GetAllAppointmentsQueryHandler : IQueryHandler<GetAllAppointmentsQuery, List<AppointmentsDto>>
     {
         private readonly ScheduleDbContext _context;
         private readonly IMapper _mapper;

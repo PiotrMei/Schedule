@@ -2,7 +2,7 @@
 {
     public interface IAppointment
     {
-        DateTime AppointmentEnd { get; set; }
-        DateTime AppointmentStart { get; set; }
+        DateTime AppointmentEnd { get; }
+        DateTime AppointmentStart { get; }
     }
 }
