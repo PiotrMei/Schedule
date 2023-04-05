@@ -17,26 +17,26 @@ namespace ScheduleApp.Controllers
         }
 
         [HttpGet]
-        public async Task<ActionResult<List<Appointment>>> GetAllAppointments()
+        public async Task<ActionResult<List<Appointment>>> GetAllAppointments(CancellationToken ct)
         {
             var request = new GetAllAppointmentsQuery();
-            var response = await _mediator.Send(request);
+            var response = await _mediator.Send(request, ct);
             return Ok(response);
         }
         [HttpPost]
-        public async Task<ActionResult> CreateAppointment([FromBody] CreateAppointmentCommand createAppointmentCommand)
+        public async Task<ActionResult> CreateAppointment([FromBody] CreateAppointmentCommand createAppointmentCommand, CancellationToken ct)
         {
             var request = new CreateAppointmentCommand(createAppointmentCommand.clientInformationsId,
                 createAppointmentCommand.serviceId, createAppointmentCommand.appointmentStart,
                 createAppointmentCommand.AppointmentEnd, createAppointmentCommand.Remarks);
-            await _mediator.Send(request);
+            await _mediator.Send(request, ct);
             return Created("api/Appointment",null);
         }
         [HttpDelete]
-        public async Task<ActionResult> DeleteAppointment([FromQuery] int appointemtID)
+        public async Task<ActionResult> DeleteAppointment([FromQuery] int appointemtID, CancellationToken ct)
         {
             var request = new DeleteAppointmentByIdCommand(appointemtID);
-            await _mediator.Send(request);
+            await _mediator.Send(request, ct);
             return NoContent();
         }
 
