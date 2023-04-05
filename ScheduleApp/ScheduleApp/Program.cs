@@ -38,6 +38,9 @@ var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetService<ScheduleSeeder>();
 //seeder.Seed();
 
+var dbContext = scope.ServiceProvider.GetService<ScheduleDbContext>();
+await dbContext!.Database.MigrateAsync();
+
 app.MapControllers();
 
 app.Run();
