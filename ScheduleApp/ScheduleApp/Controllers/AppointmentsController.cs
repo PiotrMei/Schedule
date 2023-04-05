@@ -20,7 +20,7 @@ namespace ScheduleApp.Controllers
         public async Task<ActionResult<List<Appointment>>> GetAllAppointments(CancellationToken ct)
         {
             var request = new GetAllAppointmentsQuery();
-            var response = await _mediator.Send(request, ct);
+            var response = await _mediator.Send(request, ct);//added ct
             return Ok(response);
         }
         [HttpPost]
