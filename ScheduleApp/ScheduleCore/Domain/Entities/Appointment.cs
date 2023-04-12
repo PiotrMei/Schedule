@@ -1,10 +1,11 @@
-﻿using ScheduleApp.CommandHandler;
+﻿using ScheduleCore.CommandHandler;
+using ScheduleCore.Entities;
 
-namespace ScheduleApp.Entities
+namespace ScheduleCore.Domain.Entities
 {
     internal class Appointment : IAppointment
     {
-        private Appointment() { }
+        internal Appointment() { }
 
         private Appointment(DateTime appointmentStart, DateTime appointmentEnd, Service Service, string? remarks, ClientInformation ClientInformation)
         {

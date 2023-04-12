@@ -1,7 +1,7 @@
 ﻿using MediatR;
-using ScheduleApp.Primitives;
+using ScheduleCore.Primitives;
 
-namespace ScheduleApp.Command
+namespace ScheduleCore.Command
 {
     public static class CreateAppointment
     {

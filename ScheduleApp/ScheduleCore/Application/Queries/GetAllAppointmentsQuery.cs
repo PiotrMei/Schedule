@@ -1,8 +1,8 @@
 ﻿using MediatR;
-using ScheduleApp.Models;
-using ScheduleApp.Primitives;
+using ScheduleUI.Models;
+using ScheduleCore.Primitives;
 
-namespace ScheduleApp.Queries
+namespace ScheduleCore.Queries
 {
     public class GetAllAppointmentsQuery : IQuery<List<AppointmentsDto>>
     {

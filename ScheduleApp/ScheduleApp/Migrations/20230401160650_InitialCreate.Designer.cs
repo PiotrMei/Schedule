@@ -5,11 +5,11 @@ using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ScheduleApp.Entities;
+using ScheduleCore.Entities;
 
 #nullable disable
 
-namespace ScheduleApp.Migrations
+namespace ScheduleCore.Migrations
 {
     [DbContext(typeof(ScheduleDbContext))]
     [Migration("20230401160650_InitialCreate")]

@@ -1,11 +1,11 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using ScheduleApp.Entities;
-using ScheduleApp.Models;
-using ScheduleApp.Primitives;
-using ScheduleApp.Queries;
+using ScheduleCore.Entities;
+using ScheduleUI.Models;
+using ScheduleCore.Primitives;
+using ScheduleCore.Queries;
 
-namespace ScheduleApp.QueryHandlers
+namespace ScheduleCore.QueryHandlers
 {
     internal class GetAllAppointmentsQueryHandler : IQueryHandler<GetAllAppointmentsQuery, List<AppointmentsDto>>
     {

@@ -1,10 +1,10 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
-using ScheduleApp.Command;
-using ScheduleApp.Models;
-using ScheduleApp.Queries;
+using ScheduleCore.Command;
+using ScheduleCore.Models;
+using ScheduleCore.Queries;
 
-namespace ScheduleApp.Controllers
+namespace ScheduleCore.Controllers
 {
     [Route("api/[controller]")]
     [ApiController]

@@ -1,8 +1,8 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
-using ScheduleApp.CommandHandler;
-using ScheduleApp.Entities;
-using ScheduleApp.Middleware;
+using ScheduleCore.CommandHandler;
+using ScheduleCore.Entities;
+using ScheduleCore.Middleware;
 using System.Reflection;
 
 var builder = WebApplication.CreateBuilder(args);

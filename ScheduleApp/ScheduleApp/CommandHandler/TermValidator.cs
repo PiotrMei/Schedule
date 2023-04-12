@@ -1,7 +1,7 @@
 ﻿using Microsoft.EntityFrameworkCore;
-using ScheduleApp.Entities;
+using ScheduleCore.Entities;
 
-namespace ScheduleApp.CommandHandler
+namespace ScheduleCore.CommandHandler
 {
     internal class TermValidator : ITermsValidator
     {

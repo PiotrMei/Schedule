@@ -1,6 +1,6 @@
-﻿using ScheduleApp.CommandHandler;
+﻿using ScheduleCore.CommandHandler;
 
-namespace ScheduleApp.Entities
+namespace ScheduleCore.Entities
 {
     internal class Appointment : IAppointment
     {

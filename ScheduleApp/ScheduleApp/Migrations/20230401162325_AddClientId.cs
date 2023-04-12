@@ -2,7 +2,7 @@
 
 #nullable disable
 
-namespace ScheduleApp.Migrations
+namespace ScheduleCore.Migrations
 {
     /// <inheritdoc />
     public partial class AddClientId : Migration

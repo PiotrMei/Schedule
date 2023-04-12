@@ -1,8 +1,8 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
-using ScheduleApp.Entities;
+using ScheduleCore.Entities;
 
-namespace ScheduleApp.EntitiesConfiguration
+namespace ScheduleCore.EntitiesConfiguration
 {
     internal sealed class ClientInformacionConfiguration : IEntityTypeConfiguration<ClientInformation>
     {

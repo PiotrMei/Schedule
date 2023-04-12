@@ -1,6 +1,6 @@
-﻿using ScheduleApp.Exceptions;
+﻿using ScheduleCore.Exceptions;
 
-namespace ScheduleApp.Middleware
+namespace ScheduleCore.Middleware
 {
     public class ErrorHandlingMiddleware : IMiddleware
     {

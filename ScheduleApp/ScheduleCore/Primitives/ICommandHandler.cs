@@ -1,6 +1,6 @@
 ﻿using MediatR;
 
-namespace ScheduleApp.Primitives
+namespace ScheduleCore.Primitives
 {
     public interface ICommandHandler<in TRequest> : IRequestHandler<TRequest>
         where TRequest : ICommand

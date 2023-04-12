@@ -1,7 +1,7 @@
 ﻿using AutoMapper;
-using ScheduleApp.Entities;
+using ScheduleCore.Entities;
 
-namespace ScheduleApp.Models
+namespace ScheduleCore.Models
 {
     public class ScheduleMappingProfile : Profile
     {

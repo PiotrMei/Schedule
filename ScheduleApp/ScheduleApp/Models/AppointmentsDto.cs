@@ -1,4 +1,4 @@
-﻿namespace ScheduleApp.Models
+﻿namespace ScheduleCore.Models
 {
     public class AppointmentsDto
     {

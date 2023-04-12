@@ -1,4 +1,4 @@
-﻿namespace ScheduleApp.Models
+﻿namespace ScheduleUI.Models
 {
     public class AppointmentsDto
     {

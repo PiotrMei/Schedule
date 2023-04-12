@@ -1,6 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 
-namespace ScheduleApp.Entities
+namespace ScheduleCore.Entities
 {
     internal class ScheduleDbContext : DbContext
     {

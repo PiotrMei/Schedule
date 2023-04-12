@@ -1,4 +1,4 @@
-﻿namespace ScheduleApp.Entities
+﻿namespace ScheduleCore.Entities
 {
     internal class ScheduleSeeder
     {

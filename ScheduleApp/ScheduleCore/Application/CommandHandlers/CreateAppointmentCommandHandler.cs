@@ -1,9 +1,9 @@
-﻿using ScheduleApp.Command;
-using ScheduleApp.Entities;
-using ScheduleApp.Exceptions;
-using ScheduleApp.Primitives;
+﻿using ScheduleCore.Command;
+using ScheduleCore.Entities;
+using ScheduleCore.Exceptions;
+using ScheduleCore.Primitives;
 
-namespace ScheduleApp.CommandHandler
+namespace ScheduleCore.CommandHandler
 {
     internal class CreateAppointmentCommandHandler : ICommandHandler<CreateAppointment.Command, int>
     {

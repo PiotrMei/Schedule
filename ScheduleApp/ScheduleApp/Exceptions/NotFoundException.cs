@@ -1,4 +1,4 @@
-﻿namespace ScheduleApp.Exceptions
+﻿namespace ScheduleCore.Exceptions
 {
     public class NotFoundException : Exception
     {

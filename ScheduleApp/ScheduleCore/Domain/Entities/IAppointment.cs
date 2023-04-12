@@ -1,4 +1,4 @@
-﻿namespace ScheduleApp.Entities
+﻿namespace ScheduleCore.Entities
 {
     public interface IAppointment
     {

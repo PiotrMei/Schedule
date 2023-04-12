@@ -4,11 +4,11 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
-using ScheduleApp.Entities;
+using ScheduleCore.Entities;
 
 #nullable disable
 
-namespace ScheduleApp.Migrations
+namespace ScheduleCore.Migrations
 {
     [DbContext(typeof(ScheduleDbContext))]
     partial class ScheduleDbContextModelSnapshot : ModelSnapshot

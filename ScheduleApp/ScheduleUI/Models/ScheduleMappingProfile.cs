@@ -1,11 +1,12 @@
 ﻿using AutoMapper;
-using ScheduleApp.Entities;
+using ScheduleCore.Domain.Entities;
+using ScheduleUI.Models;
 
-namespace ScheduleApp.Models
+namespace ScheduleUI.Models
 {
-    public class ScheduleMappingProfile : Profile
+    internal class ScheduleMappingProfile : Profile
     {
-        public ScheduleMappingProfile()
+        internal ScheduleMappingProfile()
         {
             CreateMap<Appointment, AppointmentsDto>()
                 .ForMember(m => m.City, c => c.MapFrom(d => d.ClientInformation.Adress.City))
