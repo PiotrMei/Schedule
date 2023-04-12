@@ -36,7 +36,7 @@ app.UseAuthorization();
 
 var scope = app.Services.CreateScope();
 var seeder = scope.ServiceProvider.GetService<ScheduleSeeder>();
-//seeder.Seed();
+seeder.Seed();
 
 var dbContext = scope.ServiceProvider.GetService<ScheduleDbContext>();
 await dbContext!.Database.MigrateAsync();
