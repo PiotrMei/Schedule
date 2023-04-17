@@ -34,16 +34,10 @@ namespace ScheduleCore.Extension
 
         }
 
-        //public static ScheduleSeeder GetSeederService(this IServiceScope scope)
-        //{
-        //    var serviceSeeder = scope.ServiceProvider.GetService<ScheduleSeeder>();
-        //    return serviceSeeder;
-        //}
-
-        public static async Task MigrateAsyncDatabase(IServiceScope scope)
+        public static async Task MigrateAsyncDatabase(IServiceScope scope, CancellationToken ct)
         {
             var dbContext = scope.ServiceProvider.GetService<ScheduleDbContext>();
-            await dbContext!.Database.MigrateAsync();
+            await dbContext!.Database.MigrateAsync(ct);
         }
 
         public static void SeedDatabase(IServiceScope scope)
