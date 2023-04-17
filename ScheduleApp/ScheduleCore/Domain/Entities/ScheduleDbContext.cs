@@ -1,4 +1,5 @@
 ﻿using Microsoft.EntityFrameworkCore;
+using ScheduleCore.Domain.Entities;
 
 namespace ScheduleCore.Entities
 {

@@ -4,18 +4,23 @@ using ScheduleCore.Middleware;
 using System.Reflection;
 using ScheduleCore.Entities;
 using ScheduleCore.CommandHandler;
+using ScheduleCore.Extension;
 
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
+
+
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
-builder.Services.AddDbContext<ScheduleDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RestaurantDbConnection")));
-builder.Services.AddScoped<ScheduleSeeder>();
+//builder.Services.AddDbContext<ScheduleDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RestaurantDbConnection")));
+builder.Services.RegisterDbContext();
+
+builder.Services.RegisterSeeder();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
-builder.Services.AddScoped<ITermsValidator, TermValidator>();
+builder.Services.RegisterValidator();
 
 var app = builder.Build();
 
@@ -35,11 +40,13 @@ app.UseRouting();
 app.UseAuthorization();
 
 var scope = app.Services.CreateScope();
-var seeder = scope.ServiceProvider.GetService<ScheduleSeeder>();
-seeder.Seed();
+//var seeder = scope.ServiceProvider.GetService<ScheduleSeeder>();
+//seeder.Seed();
+await Register.MigrateAsyncDatabase(scope);
+Register.SeedDatabase(scope);  
 
-var dbContext = scope.ServiceProvider.GetService<ScheduleDbContext>();
-await dbContext!.Database.MigrateAsync();
+//var dbContext = scope.ServiceProvider.GetService<ScheduleDbContext>();
+//await dbContext!.Database.MigrateAsync();
 
 app.MapControllerRoute(
     name: "default",

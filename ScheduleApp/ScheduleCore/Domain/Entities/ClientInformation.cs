@@ -1,4 +1,6 @@
-﻿namespace ScheduleCore.Entities
+﻿using ScheduleCore.Domain.Entities;
+
+namespace ScheduleCore.Entities
 {
     internal class ClientInformation
     {

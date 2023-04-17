@@ -1,0 +1,56 @@
+﻿using Microsoft.EntityFrameworkCore;
+using Microsoft.Extensions.DependencyInjection;
+using ScheduleCore.CommandHandler;
+using ScheduleCore.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+using System.Text;
+using System.Threading.Tasks;
+
+namespace ScheduleCore.Extension
+{
+    public static class Register
+    {
+        public static IServiceCollection RegisterDbContext(this IServiceCollection servicecollection)
+        {
+            var serviceCollection = servicecollection.AddDbContext<ScheduleDbContext>()
+                .AddSqlServer<ScheduleDbContext>("Server=(localdb)\\mssqllocaldb;Database=ScheduleAppDb;Trusted_Connection=True;");
+            return serviceCollection;
+
+        }
+
+        public static IServiceCollection RegisterSeeder(this IServiceCollection servicecollection)
+        {
+            var serviceCollection = servicecollection.AddScoped<ScheduleSeeder>();
+            return serviceCollection;
+
+        }
+
+        public static IServiceCollection RegisterValidator(this IServiceCollection servicecollection)
+        {
+            var serviceCollection = servicecollection.AddScoped<ITermsValidator, TermValidator>();
+            return serviceCollection;
+
+        }
+
+        //public static ScheduleSeeder GetSeederService(this IServiceScope scope)
+        //{
+        //    var serviceSeeder = scope.ServiceProvider.GetService<ScheduleSeeder>();
+        //    return serviceSeeder;
+        //}
+
+        public static async Task MigrateAsyncDatabase(IServiceScope scope)
+        {
+            var dbContext = scope.ServiceProvider.GetService<ScheduleDbContext>();
+            await dbContext!.Database.MigrateAsync();
+        }
+
+        public static void SeedDatabase(IServiceScope scope)
+        {
+            var serviceSeeder = scope.ServiceProvider.GetService<ScheduleSeeder>();
+            if (serviceSeeder != null)  serviceSeeder.Seed();
+        }
+
+    }
+}

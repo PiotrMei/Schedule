@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Metadata.Builders;
+using ScheduleCore.Domain.Entities;
 using ScheduleCore.Entities;
 
 namespace ScheduleCore.EntitiesConfiguration

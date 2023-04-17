@@ -1,9 +1,9 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
 using ScheduleCore.Command;
-using ScheduleCore.Models;
-using ScheduleCore.Queries;
 using ScheduleUI.Models;
+using ScheduleCore.Queries;
+
 
 namespace ScheduleUI.Controllers
 {
