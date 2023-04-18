@@ -2,7 +2,7 @@
 using ScheduleCore.Domain.Entities;
 using ScheduleUI.Models;
 
-namespace ScheduleUI.Models
+namespace ScheduleCore.QueryHandlers
 {
     internal class ScheduleMappingProfile : Profile
     {

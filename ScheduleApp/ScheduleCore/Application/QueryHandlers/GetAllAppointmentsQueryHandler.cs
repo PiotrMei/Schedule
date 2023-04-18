@@ -1,9 +1,9 @@
 ﻿using AutoMapper;
 using Microsoft.EntityFrameworkCore;
-using ScheduleCore.Entities;
 using ScheduleUI.Models;
 using ScheduleCore.Primitives;
 using ScheduleCore.Queries;
+using ScheduleCore.Infrastructure.EntityFramework.EntitiesConfiguration;
 
 namespace ScheduleCore.QueryHandlers
 {

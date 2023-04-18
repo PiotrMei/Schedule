@@ -1,7 +1,9 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ScheduleCore.Domain.Entities;
+using ScheduleCore.Entities;
+using ScheduleCore.EntitiesConfiguration;
 
-namespace ScheduleCore.Entities
+namespace ScheduleCore.Infrastructure.EntityFramework.EntitiesConfiguration
 {
     internal class ScheduleDbContext : DbContext
     {
@@ -17,8 +19,10 @@ namespace ScheduleCore.Entities
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-
-
+            new AddressConfiguration().Configure(modelBuilder.Entity<Address>());
+            new AppointmentConfiguration().Configure(modelBuilder.Entity<Appointment>());
+            new ClientInformacionConfiguration().Configure(modelBuilder.Entity<ClientInformation>());
+            new ServiceConfiguration().Configure(modelBuilder.Entity<Service>());
         }
     }
 }

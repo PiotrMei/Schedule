@@ -2,6 +2,7 @@
 using Microsoft.Extensions.DependencyInjection;
 using ScheduleCore.CommandHandler;
 using ScheduleCore.Entities;
+using ScheduleCore.Infrastructure.EntityFramework.EntitiesConfiguration;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -15,7 +16,8 @@ namespace ScheduleCore.Extension
         public static IServiceCollection RegisterDbContext(this IServiceCollection servicecollection)
         {
             var serviceCollection = servicecollection.AddDbContext<ScheduleDbContext>()
-                .AddSqlServer<ScheduleDbContext>("Server=(localdb)\\mssqllocaldb;Database=ScheduleAppDb;Trusted_Connection=True;");
+                .AddSqlServer<ScheduleDbContext>("Server=(localdb)\\mssqllocaldb;Database=ScheduleAppDb2;Trusted_Connection=True;");
+                
             return serviceCollection;
 
         }

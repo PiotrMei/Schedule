@@ -1,5 +1,6 @@
 ﻿using Microsoft.EntityFrameworkCore;
 using ScheduleCore.Entities;
+using ScheduleCore.Infrastructure.EntityFramework.EntitiesConfiguration;
 
 namespace ScheduleCore.CommandHandler
 {

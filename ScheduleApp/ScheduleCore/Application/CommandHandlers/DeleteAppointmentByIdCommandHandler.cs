@@ -1,7 +1,7 @@
 ﻿using MediatR;
 using ScheduleCore.Command;
-using ScheduleCore.Entities;
 using ScheduleCore.Exceptions;
+using ScheduleCore.Infrastructure.EntityFramework.EntitiesConfiguration;
 using ScheduleCore.Primitives;
 
 namespace ScheduleCore.CommandHandler

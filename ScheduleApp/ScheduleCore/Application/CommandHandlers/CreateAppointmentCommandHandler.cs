@@ -2,9 +2,9 @@
 using Microsoft.Extensions.DependencyInjection;
 using ScheduleCore.Command;
 using ScheduleCore.Domain.Entities;
-using ScheduleCore.Entities;
 using ScheduleCore.Exceptions;
 using ScheduleCore.Extension;
+using ScheduleCore.Infrastructure.EntityFramework.EntitiesConfiguration;
 using ScheduleCore.Primitives;
 
 namespace ScheduleCore.CommandHandler

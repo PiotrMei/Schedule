@@ -42,7 +42,8 @@ app.UseAuthorization();
 var scope = app.Services.CreateScope();
 //var seeder = scope.ServiceProvider.GetService<ScheduleSeeder>();
 //seeder.Seed();
-await Register.MigrateAsyncDatabase(scope);
+var ct = new CancellationToken();
+await Register.MigrateAsyncDatabase(scope, ct);
 Register.SeedDatabase(scope);  
 
 //var dbContext = scope.ServiceProvider.GetService<ScheduleDbContext>();
