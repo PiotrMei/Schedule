@@ -19,10 +19,11 @@ namespace ScheduleCore.Infrastructure.EntityFramework.EntitiesConfiguration
 
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
-            new AddressConfiguration().Configure(modelBuilder.Entity<Address>());
             new AppointmentConfiguration().Configure(modelBuilder.Entity<Appointment>());
             new ClientInformacionConfiguration().Configure(modelBuilder.Entity<ClientInformation>());
             new ServiceConfiguration().Configure(modelBuilder.Entity<Service>());
+            new AddressConfiguration().Configure(modelBuilder.Entity<Address>());
+
         }
     }
 }

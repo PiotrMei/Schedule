@@ -13,10 +13,10 @@ namespace ScheduleCore.Extension
 {
     public static class Register
     {
-        public static IServiceCollection RegisterDbContext(this IServiceCollection servicecollection)
+        public static IServiceCollection RegisterDbContext(this IServiceCollection servicecollection, string connectionString)
         {
             var serviceCollection = servicecollection.AddDbContext<ScheduleDbContext>()
-                .AddSqlServer<ScheduleDbContext>("Server=(localdb)\\mssqllocaldb;Database=ScheduleAppDb2;Trusted_Connection=True;");
+                .AddSqlServer<ScheduleDbContext> (connectionString);
                 
             return serviceCollection;
 

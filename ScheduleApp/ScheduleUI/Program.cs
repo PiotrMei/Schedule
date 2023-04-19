@@ -11,11 +11,11 @@ var builder = WebApplication.CreateBuilder(args);
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
-
+var connectionString = builder.Configuration.GetConnectionString("RestaurantDbConnection");
 
 builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 //builder.Services.AddDbContext<ScheduleDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RestaurantDbConnection")));
-builder.Services.RegisterDbContext();
+builder.Services.RegisterDbContext(connectionString);
 
 builder.Services.RegisterSeeder();
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
