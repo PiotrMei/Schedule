@@ -5,6 +5,7 @@ using System.Reflection;
 using ScheduleCore.Entities;
 using ScheduleCore.CommandHandler;
 using ScheduleCore.Extension;
+using ScheduleCore.Application;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -13,14 +14,16 @@ builder.Services.AddControllersWithViews();
 
 var connectionString = builder.Configuration.GetConnectionString("RestaurantDbConnection");
 
-builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
+//builder.Services.AddMediatR(Assembly.GetExecutingAssembly());
 //builder.Services.AddDbContext<ScheduleDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RestaurantDbConnection")));
 builder.Services.RegisterDbContext(connectionString);
-
+builder.Services.RegisterAutoMapper();
+//builder.Services.AddScoped<IMediatRSend, MediatRSend>();
 builder.Services.RegisterSeeder();
-builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+//builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 builder.Services.AddScoped<ErrorHandlingMiddleware>();
 builder.Services.RegisterValidator();
+builder.Services.RegisterMediatR();
 
 var app = builder.Build();
 

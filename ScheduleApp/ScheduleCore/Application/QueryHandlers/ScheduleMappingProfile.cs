@@ -1,7 +1,6 @@
 ﻿using AutoMapper;
 using ScheduleCore.Domain.Entities;
-using ScheduleUI.Models;
-
+using ScheduleCore.QueryHandlers;
 namespace ScheduleCore.QueryHandlers
 {
     internal class ScheduleMappingProfile : Profile

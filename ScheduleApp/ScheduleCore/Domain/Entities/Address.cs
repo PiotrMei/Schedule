@@ -2,6 +2,7 @@
 {
     internal class Address
     {
+
         public int Id { get; set; }
         public string City { get; set; }
         public string PostalCode { get; set; }
@@ -10,4 +11,7 @@
         public int ClientId { get; set; }
         public virtual ClientInformation ClientInformations { get; set; }
     }
+
+
+
 }

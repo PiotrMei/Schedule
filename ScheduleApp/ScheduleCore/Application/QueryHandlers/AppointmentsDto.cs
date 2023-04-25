@@ -1,4 +1,4 @@
-﻿namespace ScheduleUI.Models
+﻿namespace ScheduleCore.QueryHandlers
 {
     public class AppointmentsDto
     {

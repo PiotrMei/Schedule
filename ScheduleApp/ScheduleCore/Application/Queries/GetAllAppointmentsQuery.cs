@@ -1,10 +1,10 @@
 ﻿using MediatR;
-using ScheduleUI.Models;
+using ScheduleCore.QueryHandlers;
 using ScheduleCore.Primitives;
 
 namespace ScheduleCore.Queries
 {
-    public class GetAllAppointmentsQuery : IQuery<List<AppointmentsDto>>
+    public class GetAllAppointmentsQuery : IRequest<List<AppointmentsDto>>
     {
     }
 }
