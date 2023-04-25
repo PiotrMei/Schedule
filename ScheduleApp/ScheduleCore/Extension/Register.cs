@@ -16,6 +16,8 @@ namespace ScheduleCore.Extension
 {
     public static class Register
     {
+        public static Assembly CurrentAssembly => Assembly.GetExecutingAssembly();
+
         public static IServiceCollection RegisterDbContext(this IServiceCollection servicecollection, string? connectionString)
         {
             var serviceCollection = servicecollection.AddDbContext<ScheduleDbContext>(options => options.UseSqlServer(connectionString));
@@ -26,14 +28,14 @@ namespace ScheduleCore.Extension
         public static IServiceCollection RegisterMediatR(this IServiceCollection servicecollection)
         {
             //var serviceCollection = servicecollection.AddMediatR(Assembly.GetExecutingAssembly());
-            var serviceCollection = servicecollection.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(Assembly.GetExecutingAssembly()));
+            var serviceCollection = servicecollection.AddMediatR(cfg => cfg.RegisterServicesFromAssembly(CurrentAssembly));
             return serviceCollection;   
         }
 
         public static IServiceCollection RegisterAutoMapper(this IServiceCollection servicecollection)
         {
             // var serviceCollection = servicecollection.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
-            var serviceCollection = servicecollection.AddAutoMapper(Assembly.GetExecutingAssembly());
+            var serviceCollection = servicecollection.AddAutoMapper(CurrentAssembly);
             return serviceCollection;
 
         }

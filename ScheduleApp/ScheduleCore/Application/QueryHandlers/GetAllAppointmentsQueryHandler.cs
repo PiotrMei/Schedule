@@ -1,10 +1,8 @@
 ﻿using AutoMapper;
-using Microsoft.EntityFrameworkCore;
-using ScheduleCore.QueryHandlers;
-using ScheduleCore.Primitives;
-using ScheduleCore.Queries;
-using ScheduleCore.Infrastructure.EntityFramework.EntitiesConfiguration;
 using MediatR;
+using Microsoft.EntityFrameworkCore;
+using ScheduleCore.Infrastructure.EntityFramework.EntitiesConfiguration;
+using ScheduleCore.Queries;
 
 namespace ScheduleCore.QueryHandlers
 {
@@ -18,16 +16,16 @@ namespace ScheduleCore.QueryHandlers
             _context = context;
             _mapper = mapper;
         }
-        public Task<List<AppointmentsDto>> Handle(GetAllAppointmentsQuery request, CancellationToken cancellationToken)
+        public async Task<List<AppointmentsDto>> Handle(GetAllAppointmentsQuery request, CancellationToken cancellationToken)
         {
-            var appointments = _context.Appointments
+            var appointments = await _context.Appointments
                 .Include(a => a.ClientInformation)
                 .Include(a => a.Service)
                 .Include(a => a.ClientInformation.Adress)
-                .ToList();
+                .ToListAsync(cancellationToken);
             var appointmentsDto = _mapper.Map<List<AppointmentsDto>>(appointments).ToList();
 
-            return Task.FromResult(appointmentsDto);
+            return appointmentsDto;
         }
     }
 }

@@ -1,11 +1,10 @@
 ﻿using AutoMapper;
 using ScheduleCore.Domain.Entities;
-using ScheduleCore.QueryHandlers;
 namespace ScheduleCore.QueryHandlers
 {
     internal class ScheduleMappingProfile : Profile
     {
-        internal ScheduleMappingProfile()
+        public ScheduleMappingProfile()
         {
             CreateMap<Appointment, AppointmentsDto>()
                 .ForMember(m => m.City, c => c.MapFrom(d => d.ClientInformation.Adress.City))
