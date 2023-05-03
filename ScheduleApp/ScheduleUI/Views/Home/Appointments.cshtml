@@ -1,18 +1,23 @@
 ﻿@{
-    ViewData["Title"] = "Spotkania";
+	ViewData["Title"] = "Spotkania";
 }
 <h1>@ViewData["Title"]</h1>
+<a class="nav-link text-dark" asp-area="" asp-controller="Home" asp-action="Index">Home</a>
 
+@model List<ScheduleCore.QueryHandlers.AppointmentsDto>
 
-<p>AAAAAAAAAAAAAAAAAAAAAAAAAa.</p>
+	@foreach (var item in @Model)
+	{
+		
+		<p>@nameof(item.Id): @item.Id</p>
+		<p>Klient: @item.Name @item.LastName</p>
+		<p>Dodatkowe informacje o kliencie: @item.ClientRemarks</p>
+		<p>Adres: @item.PostalCode @item.City @item.Street @item.Number</p>
+		<p>Numer telefonu: @item.PhoneNumber</p>
+		<p>Data usługi: @item.AppointmentStart - @item.AppointmentEnd</p>
+		<p>Uwagi: @item.Remarks</p>
+		<p>Usługa: @item.ServiceName Cena: @item.Price zł</p>
+		<p>Opis: @item.Description </p>
+		<p> </p>
+	}
 
-@*@model ScheduleCore.QueryHandlers.AppointmentsDto
-
-<h2>AppointmentsDto</h2>
-<address>
-    @Model.AppointmentStart<br>
-    @Model.AppointmentEnd<br>
-    @Model.City<br>
-
-
-</address>*@

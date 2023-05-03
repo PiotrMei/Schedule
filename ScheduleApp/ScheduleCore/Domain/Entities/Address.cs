@@ -12,6 +12,6 @@
         public virtual ClientInformation ClientInformations { get; set; }
     }
 
-
+    
 
 }
