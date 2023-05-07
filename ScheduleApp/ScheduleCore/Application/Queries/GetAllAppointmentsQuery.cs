@@ -4,7 +4,7 @@ using ScheduleCore.Primitives;
 
 namespace ScheduleCore.Queries
 {
-    public class GetAllAppointmentsQuery : IRequest<List<AppointmentsDto>>
+    public class GetAllAppointmentsQuery : IQuery<List<AppointmentsDto>>
     {
     }
 }

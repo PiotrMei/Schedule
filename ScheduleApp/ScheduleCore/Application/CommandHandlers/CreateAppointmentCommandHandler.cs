@@ -9,7 +9,7 @@ using ScheduleCore.Primitives;
 
 namespace ScheduleCore.CommandHandler
 {
-    internal class CreateAppointmentCommandHandler : ICommandHandler<CreateAppointment.Command, int>
+    internal class CreateAppointmentCommandHandler : ICommandHandler<CreateAppointmentCommand, int>
     {
       
         private readonly ScheduleDbContext _context;
@@ -22,7 +22,7 @@ namespace ScheduleCore.CommandHandler
             _termsValidator = termsValidator;
            
         }
-        public async Task<int> Handle(CreateAppointment.Command request, CancellationToken cancellationToken)
+        public async Task<int> Handle(CreateAppointmentCommand request, CancellationToken cancellationToken)
         {
             
             var client = _context.Clients.FirstOrDefault(a => a.Id == request.ClientInformationsId);

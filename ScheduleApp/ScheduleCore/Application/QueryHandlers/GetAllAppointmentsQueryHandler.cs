@@ -2,11 +2,12 @@
 using MediatR;
 using Microsoft.EntityFrameworkCore;
 using ScheduleCore.Infrastructure.EntityFramework.EntitiesConfiguration;
+using ScheduleCore.Primitives;
 using ScheduleCore.Queries;
 
 namespace ScheduleCore.QueryHandlers
 {
-    internal class GetAllAppointmentsQueryHandler : IRequestHandler<GetAllAppointmentsQuery, List<AppointmentsDto>>
+    internal class GetAllAppointmentsQueryHandler : IQueryHandler<GetAllAppointmentsQuery, List<AppointmentsDto>>
     {
         private readonly ScheduleDbContext _context;
         private readonly IMapper _mapper;

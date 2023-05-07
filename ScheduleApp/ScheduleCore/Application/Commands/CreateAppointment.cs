@@ -3,11 +3,8 @@ using ScheduleCore.Primitives;
 
 namespace ScheduleCore.Command
 {
-    public static class CreateAppointment
+    public record CreateAppointmentCommand(int ClientInformationsId, int ServiceId,
+                DateTime AppointmentStart, DateTime AppointmentEnd, string? Remarks) : ICommand<int>
     {
-        public record Command(int ClientInformationsId, int ServiceId,
-            DateTime AppointmentStart, DateTime AppointmentEnd, string? Remarks) : ICommand<int>
-        {
-        }
     }
 }

@@ -3,7 +3,8 @@ using Microsoft.AspNetCore.Mvc;
 using ScheduleCore.Command;
 using ScheduleCore.QueryHandlers;
 using ScheduleCore.Queries;
-
+using ScheduleCore.Application.Commands;
+using ScheduleCore.Application.Queries;
 
 namespace ScheduleUI.Controllers
 {
@@ -26,17 +27,17 @@ namespace ScheduleUI.Controllers
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateAppointment([FromBody] CreateAppointment.Command createAppointmentCommand)
+        public async Task<ActionResult> CreateAppointment([FromBody] CreateAppointmentCommand createAppointmentCommand)
         {
             await _mediator.Send(createAppointmentCommand);
             return Created("api/Appointment", null);
         }
 
         [HttpPost]
-        public async Task<ActionResult> CreateClient([FromBody] CreateAppointment.Command createAppointmentCommand)
+        public async Task<ActionResult> CreateClient([FromBody] CreateClientCommand createClientCommand)
         {
-            await _mediator.Send(createAppointmentCommand);
-            return Created("api/Appointment", null);
+            int ClientId = await _mediator.Send(createClientCommand);
+            return Created(@"api/{ClientId}", null);
         }
 
         [HttpDelete("{appointemtId}")]

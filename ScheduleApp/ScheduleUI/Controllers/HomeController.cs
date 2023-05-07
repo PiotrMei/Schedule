@@ -1,11 +1,11 @@
 ﻿using MediatR;
 using Microsoft.AspNetCore.Mvc;
+using ScheduleCore.Application.Commands;
+using ScheduleCore.Application.Queries;
+using ScheduleCore.Entities;
+using ScheduleCore.Queries;
 using ScheduleUI.Models;
 using System.Diagnostics;
-using ScheduleCore.Entities;
-using ScheduleCore.QueryHandlers;
-using ScheduleCore.Queries;
-using ScheduleCore.Application;
 
 namespace ScheduleUI.Controllers
 {
@@ -13,7 +13,6 @@ namespace ScheduleUI.Controllers
     {
         private readonly ILogger<HomeController> _logger;
         private readonly IMediator _mediator;
-        // private readonly IMediatRSend _mediatorSend;
 
         public HomeController(ILogger<HomeController> logger, IMediator mediator)
         {
@@ -43,7 +42,6 @@ namespace ScheduleUI.Controllers
             return View(viewModel);
         }
 
-
         public async Task<IActionResult> Appointments(CancellationToken ct)
         {
             var request = new GetAllAppointmentsQuery();
@@ -51,7 +49,27 @@ namespace ScheduleUI.Controllers
 
             return View(response);
         }
+       
+        public async Task<IActionResult> Clients(CancellationToken ct)
+        {
+            var request = new GetAllClientsQuery();
+            var response = await _mediator.Send(request, ct);
 
+            return View(response);
+        }
+
+        public IActionResult CreateClientView()
+        {
+            //var request = new CreateClientCommand();
+            return View();
+        }
+        [HttpPost]
+        public async Task<IActionResult> CreateClientPost(CreateClientCommand createClientCommand, CancellationToken ct)
+        {
+            int ClientId = await _mediator.Send(createClientCommand, ct);
+            
+            return View(ClientId);
+        }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
         public IActionResult Error()

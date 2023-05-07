@@ -1,0 +1,57 @@
+﻿@{
+	ViewData["Title"] = "Dodaj klienta";
+}
+
+@model ScheduleCore.Application.Commands.CreateClientCommand
+
+<h1>@ViewData["Title"]</h1>
+
+<form method="Get">
+	<div class="mb-3">
+	<button type="submit" class="btn btn-primary me-3"
+	asp-controller="Home"
+	asp-action="Clients">
+	Powrót</button>
+	</div>
+</form>
+
+<form method="post">
+	<div class="mb-3">
+		<label class="form-label" >Imię</label>
+		<input type="text" class="form-control" asp-for="Name"/>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" >Nazwisko</label>
+		<input type="text" class="form-control" asp-for="LastName"/>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" >Numer telefonu</label>
+		<input type="text" class="form-control" asp-for="PhoneNumber"/>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" >Uwagi</label>
+		<input type="text" class="form-control" asp-for="Remarks"/>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" >Kod pocztowy</label>
+		<input type="text" class="form-control" asp-for="PostalCode"/>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" >Miasto</label>
+		<input type="text" class="form-control" asp-for="City"/>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" >Ulica</label>
+		<input type="text" class="form-control" asp-for="Street"/>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" >Numer</label>
+		<input type="text" class="form-control" asp-for="Number"/>
+	</div>
+	<div class="mb-3">
+	<button type="submit" class="btn btn-primary me-3"
+	asp-controller="Home"
+	asp-action="CreateClientPost">
+	Zapisz</button>
+	</div>
+</form>
