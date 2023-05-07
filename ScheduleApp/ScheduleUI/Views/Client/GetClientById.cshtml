@@ -1,0 +1,24 @@
+﻿@model ScheduleCore.Application.QueryHandlers.ClientInformationDto
+@{
+	ViewData["Title"] = "Klient";
+}
+
+<form method="Get">
+	<div class="mb-3">
+	<button type="Submit" class="btn btn-primary me-3"
+	asp-controller="Client"
+	asp-action="Clients">
+	Powrót</button>
+	</div>
+</form>
+
+<form>
+	<div class="mb-3">
+		<label class="form-label" >Imię</label>
+		<label class="form-label" >@Model.Name</label>
+	</div>
+	<div class="mb-3">
+		<label class="form-label" >Nazwisko</label>
+		<label class="form-label" >@Model.LastName</label>
+	</div>
+</form>

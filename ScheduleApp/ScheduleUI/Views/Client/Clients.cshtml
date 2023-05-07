@@ -1,0 +1,84 @@
+﻿@model List<ScheduleCore.Application.QueryHandlers.ClientInformationDto>
+@{
+	ViewData["Title"] = "Klienci";
+}
+
+
+<form>
+	<div class="row">
+		<div class="col-6">
+			<h2 class="text-info">Lista klientów</h2>
+		</div>
+		<form method="post">
+			<div class="mb-3">
+				<button type="submit" class="btn btn-primary me-3"
+						asp-controller="Client"
+						asp-action="CreateClientView">
+					Dodaj klienta
+				</button>
+			</div>
+		</form>
+	</div>
+
+
+
+	<div class="border bg-white">
+
+
+		<table class="table">
+			<tr>
+				<th>
+					@Html.DisplayNameFor(m => m[0].Name)
+				</th>
+				<th>
+					@Html.DisplayNameFor(m => m[0].LastName)
+				</th>
+				<th>
+					@Html.DisplayNameFor(m => m[0].PhoneNumber)
+				</th>
+				<th>
+
+				</th>
+			</tr>
+			@foreach (var item in Model)
+			{
+				<tr>
+					<td>
+						@Html.DisplayFor(m => item.Name)
+					</td>
+					<td>
+						@Html.DisplayFor(m => item.LastName)
+					</td>
+					<td>
+						@Html.DisplayFor(m => item.PhoneNumber)
+					</td>
+					<td>
+						<form method="get">
+							<div>
+								<button type="submit" class="btn btn-primary me-3"
+									asp-controller="Client"
+									asp-action="DeleteClient"
+									asp-route-ClientId="@item.Id">
+									Usuń
+								</button>
+							</div>
+						</form>
+					</td>
+					<td>
+						<form method="get">
+							<div>
+								<button type="submit" class="btn btn-primary me-3"
+									asp-controller="Client"
+									asp-action="GetClientById"
+									asp-route-ClientId="@item.Id">
+									Szczególy
+								</button>
+							</div>
+						</form>
+					</td>
+				</tr>
+			}
+		</table>
+
+	</div>
+</form>

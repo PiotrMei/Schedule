@@ -2,54 +2,23 @@
 using Microsoft.AspNetCore.Mvc;
 using ScheduleCore.Application.Commands;
 using ScheduleCore.Application.Queries;
-using ScheduleCore.Entities;
-using ScheduleCore.Queries;
 using ScheduleUI.Models;
 using System.Diagnostics;
 
 namespace ScheduleUI.Controllers
 {
-    public class HomeController : Controller
+    [Route("[controller]")]
+    public class ClientController : Controller
     {
-        private readonly ILogger<HomeController> _logger;
+        private readonly ILogger<ClientController> _logger;
         private readonly IMediator _mediator;
 
-        public HomeController(ILogger<HomeController> logger, IMediator mediator)
+        public ClientController(ILogger<ClientController> logger, IMediator mediator)
         {
             _logger = logger;
             _mediator = mediator;
         }
-
-        public IActionResult Index()
-        {
-            return View();
-        }
-
-        public IActionResult Privacy()
-        {
-            return View();
-        }
-        public IActionResult TestViev()
-        {
-
-            var viewModel = new Address2
-            {
-                City = "Mikołów",
-                PostalCode = "43-190"
-            };
-
-
-            return View(viewModel);
-        }
-
-        public async Task<IActionResult> Appointments(CancellationToken ct)
-        {
-            var request = new GetAllAppointmentsQuery();
-            var response = await _mediator.Send(request, ct);
-
-            return View(response);
-        }
-
+        [HttpGet("/Clients")]
         public async Task<IActionResult> Clients(CancellationToken ct)
         {
             var request = new GetAllClientsQuery();
@@ -57,12 +26,12 @@ namespace ScheduleUI.Controllers
 
             return View(response);
         }
-
+        [HttpGet("/CreateClientView")]
         public IActionResult CreateClientView()
         {
             return View();
         }
-        [HttpPost]
+        [HttpPost("CreateClientPost")]
         public async Task<IActionResult> CreateClientPost(CreateClientCommand createClientCommand, CancellationToken ct)
         {
             int ClientId = await _mediator.Send(createClientCommand, ct);
@@ -70,7 +39,7 @@ namespace ScheduleUI.Controllers
             return View(ClientId);
         }
 
-        [HttpGet("{ClientId}")]
+        [HttpGet("DeleteClient/{ClientId}")]
         public IActionResult DeleteClient([FromRoute] int ClientId)
         {
             var deleteCLientByIdCommand = new DeleteCLientByIdCommand(ClientId);
@@ -78,7 +47,7 @@ namespace ScheduleUI.Controllers
         }
 
 
-        [HttpPost("{ClientId}")]
+        [HttpPost("DeleteClient/{ClientId}")]
         public async Task<IActionResult> DeleteClient([FromRoute]int ClientId, CancellationToken ct)
         {
             var deleteCLientByIdCommand = new DeleteCLientByIdCommand(ClientId);
@@ -86,7 +55,7 @@ namespace ScheduleUI.Controllers
             return RedirectToAction("Clients");
         }
 
-        [HttpGet("Get/{ClientId}")]
+        [HttpGet("GetClientById/{ClientId}")]
         public async Task<IActionResult> GetClientById([FromRoute] int ClientId, CancellationToken ct)
         {
             var request = new GetClientByIdQuery(ClientId);
