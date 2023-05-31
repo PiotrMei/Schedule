@@ -30,7 +30,8 @@ namespace ScheduleCore.QueryHandlers
                 .ForMember(m => m.Name, c => c.MapFrom(d => d.Name))
                 .ForMember(m => m.LastName, c => c.MapFrom(d => d.LastName))
                 .ForMember(m => m.ClientRemarks, c => c.MapFrom(d => d.Remarks))
-                .ForMember(m => m.PhoneNumber, c => c.MapFrom(d => d.PhoneNumber));
+                .ForMember(m => m.PhoneNumber, c => c.MapFrom(d => d.PhoneNumber))
+                .ForMember(m => m.AppointmentsDto, c => c.MapFrom(d => d.Appointments));
         }
     }
 }

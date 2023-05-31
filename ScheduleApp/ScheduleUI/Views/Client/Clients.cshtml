@@ -28,16 +28,14 @@
 		<table class="table">
 			<tr>
 				<th>
-					@Html.DisplayNameFor(m => m[0].Name)
+					<a>Imię</a>
 				</th>
 				<th>
-					@Html.DisplayNameFor(m => m[0].LastName)
+					<a>Nazwisko</a>
 				</th>
 				<th>
-					@Html.DisplayNameFor(m => m[0].PhoneNumber)
-				</th>
-				<th>
-
+					@*@Html.DisplayNameFor(m => m[0].PhoneNumber)*@
+					<a>Numer tel.</a>
 				</th>
 			</tr>
 			@foreach (var item in Model)
@@ -71,7 +69,7 @@
 									asp-controller="Client"
 									asp-action="GetClientById"
 									asp-route-ClientId="@item.Id">
-									Szczególy
+									Szczegóły
 								</button>
 							</div>
 						</form>

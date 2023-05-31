@@ -20,7 +20,9 @@ namespace ScheduleCore.Application.QueryHandlers
         public async Task<ClientInformationDto> Handle(GetClientByIdQuery request, CancellationToken cancellationToken)
         {
             var client = await _context.Clients.Include(a => a.Adress)
-                 .FirstOrDefaultAsync(c => c.Id == request.ClientId, cancellationToken);
+                .Include(a => a.Appointments)
+                .ThenInclude(b =>b.Service)
+                 .FirstOrDefaultAsync(c => c.Id == request.ClientId, cancellationToken);            
             if (client == null) throw new NotFoundException("CLient not Found");
             var clientDto = _mapper.Map<ClientInformationDto>(client);
             return clientDto;

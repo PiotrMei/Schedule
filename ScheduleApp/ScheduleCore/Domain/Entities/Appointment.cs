@@ -16,13 +16,13 @@ namespace ScheduleCore.Domain.Entities
             this.ClientInformation = ClientInformation;
         }
 
-        private Appointment(DateTime appointmentStart, DateTime appointmentEnd, int serviceId, string? remarks, int clientInformationsId)
+        private Appointment(DateTime appointmentStart, DateTime appointmentEnd, int serviceId, string? remarks, int clientInformationId)
         {
             AppointmentStart = appointmentStart;
             AppointmentEnd = appointmentEnd;
             ServiceId = serviceId;
             Remarks = remarks;
-            ClientInformationsId = clientInformationsId;
+            ClientInformationId = clientInformationId;
         }
 
         public static async Task<Appointment> Create(
@@ -31,11 +31,11 @@ namespace ScheduleCore.Domain.Entities
             DateTime appointmentEnd, 
             int serviceId, 
             string? remarks, 
-            int clientInformationsId, 
+            int clientInformationId, 
             CancellationToken ct)
         {
             await validator.ValidateAsync(appointmentStart, appointmentEnd, ct);
-            return new Appointment(appointmentStart, appointmentEnd, serviceId, remarks, clientInformationsId);
+            return new Appointment(appointmentStart, appointmentEnd, serviceId, remarks, clientInformationId);
         }
 
         internal static Appointment CreateForce(
@@ -54,7 +54,7 @@ namespace ScheduleCore.Domain.Entities
         public int ServiceId { get; private set; }
         public virtual Service? Service { get; private set; }
         public string? Remarks { get; private set; }
-        public int ClientInformationsId { get; private set; }
+        public int ClientInformationId { get; private set; }
         public virtual ClientInformation? ClientInformation { get; private set; }
     }
 }

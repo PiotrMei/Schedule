@@ -5,20 +5,81 @@
 
 <form method="Get">
 	<div class="mb-3">
-	<button type="Submit" class="btn btn-primary me-3"
-	asp-controller="Client"
-	asp-action="Clients">
-	Powrót</button>
+		<button type="Submit" class="btn btn-primary me-3"
+				asp-controller="Client"
+				asp-action="Clients">
+			Powrót
+		</button>
+	</div>
+</form>
+<form method="get">
+<div>
+	<button type="submit" class="btn btn-primary me-3"
+			asp-controller="Client"
+			asp-action="PutClientView"
+			asp-route-ClientId="@Model.Id">
+		Edytuj
+	</button>
+</div>
+</form>
+<form>
+	<div class="mb-3">
+		<label class="form-label">Imię i Nazwisko:</label>
+		<label class="form-label">@Model.Name @Model.LastName</label>
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Numer telefonu:</label>
+		<label class="form-label">@Model.PhoneNumber</label>
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Adres:</label>
+		<label class="form-label">@Model.PostalCode @Model.City @Model.Street @Model.Number</label>
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Uwagi o kliencie:</label>
+		<label class="form-label">@Model.ClientRemarks</label>
+	</div>
+	<div class="mb-4">
+		<label class="form-label">Umówione wizyty:</label>
 	</div>
 </form>
 
-<form>
-	<div class="mb-3">
-		<label class="form-label" >Imię</label>
-		<label class="form-label" >@Model.Name</label>
-	</div>
-	<div class="mb-3">
-		<label class="form-label" >Nazwisko</label>
-		<label class="form-label" >@Model.LastName</label>
-	</div>
-</form>
+<table class="table">
+	<tr>
+		<th>
+			<a>Data</a>
+		</th>
+		<th>
+			<a>Usługa</a>
+		</th>
+		<th>
+			<a>Opis</a>
+		</th>
+		<th>
+			<a>Cena</a>
+		</th>
+		<th>
+			<a>Uwagi</a>
+		</th>
+		@foreach (var item in Model.AppointmentsDto)
+		{
+		<tr>
+			<td>
+					@Html.DisplayFor(m => item.AppointmentStart)
+					@Html.DisplayFor(m => item.AppointmentEnd)
+			</td>
+			<td>
+					@Html.DisplayFor(m => item.ServiceName)
+			</td>
+			<td>
+					@Html.DisplayFor(m => item.Description)
+			</td>
+			<td>
+					@Html.DisplayFor(m => item.Price)
+			</td>
+			<td>
+					@Html.DisplayFor(m => item.Remarks)
+			</td>
+		</tr>
+		}
+</table>

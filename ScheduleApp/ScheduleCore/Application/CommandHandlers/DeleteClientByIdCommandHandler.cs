@@ -20,7 +20,7 @@ namespace ScheduleCore.Application.CommandHandlers
             var ClientToRemove = await _context.Clients.Include(s => s.Adress)
                  .FirstOrDefaultAsync(c => c.Id == request.ClientId);
             if (ClientToRemove == null) throw new NotFoundException("Client Not Found");
-
+           
             var AddressToRemove = ClientToRemove.Adress;
             if (AddressToRemove != null) _context.Remove(AddressToRemove);
 

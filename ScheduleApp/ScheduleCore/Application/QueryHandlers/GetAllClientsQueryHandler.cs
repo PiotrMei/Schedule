@@ -18,16 +18,17 @@ namespace ScheduleCore.Application.QueryHandlers
         public GetAllClientsQueryHandler(ScheduleDbContext context, IMapper mapper)
         {
             _context = context;
-            _mapper = mapper;   
+            _mapper = mapper;
         }
 
         public async Task<List<ClientInformationDto>> Handle(GetAllClientsQuery request, CancellationToken cancellationToken)
         {
             var Clients = await _context.Clients
                 .Include(a => a.Adress)
+                .Include(a => a.Appointments)
                 .ToListAsync(cancellationToken);
-           
-            var ClientsDto = _mapper.Map<List<ClientInformationDto>>(Clients).ToList(); 
+
+            var ClientsDto = _mapper.Map<List<ClientInformationDto>>(Clients).ToList();
             return ClientsDto;
         }
     }

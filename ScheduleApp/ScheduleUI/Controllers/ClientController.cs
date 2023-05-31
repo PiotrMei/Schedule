@@ -31,7 +31,7 @@ namespace ScheduleUI.Controllers
         {
             return View();
         }
-        [HttpPost("CreateClientPost")]
+        [HttpPost("/CreateClientPost")]
         public async Task<IActionResult> CreateClientPost(CreateClientCommand createClientCommand, CancellationToken ct)
         {
             int ClientId = await _mediator.Send(createClientCommand, ct);
@@ -39,7 +39,7 @@ namespace ScheduleUI.Controllers
             return View(ClientId);
         }
 
-        [HttpGet("DeleteClient/{ClientId}")]
+        [HttpGet("/DeleteClient/{ClientId}")]
         public IActionResult DeleteClient([FromRoute] int ClientId)
         {
             var deleteCLientByIdCommand = new DeleteCLientByIdCommand(ClientId);
@@ -47,7 +47,7 @@ namespace ScheduleUI.Controllers
         }
 
 
-        [HttpPost("DeleteClient/{ClientId}")]
+        [HttpPost("/DeleteClient/{ClientId}")]
         public async Task<IActionResult> DeleteClient([FromRoute]int ClientId, CancellationToken ct)
         {
             var deleteCLientByIdCommand = new DeleteCLientByIdCommand(ClientId);
@@ -55,12 +55,31 @@ namespace ScheduleUI.Controllers
             return RedirectToAction("Clients");
         }
 
-        [HttpGet("GetClientById/{ClientId}")]
+        [HttpGet("/GetClientById/{ClientId}")]
         public async Task<IActionResult> GetClientById([FromRoute] int ClientId, CancellationToken ct)
         {
             var request = new GetClientByIdQuery(ClientId);
             var response = await _mediator.Send(request, ct);
             return View(response);
+        }
+
+        [HttpGet("/PutClientView/{ClientId}")]
+        public async Task<IActionResult> PutClientView([FromRoute] int clientId, CancellationToken ct)
+        {
+            var request = new GetClientByIdQuery(clientId);
+            var response = await _mediator.Send(request, ct);
+            var PutClientByIdCommand = new PutClientByIdCommand(clientId, response.Name ,response.LastName ,
+                response.PhoneNumber , response.ClientRemarks, response.City,response.PostalCode ,
+                response.Street ,response.Number );
+            return View(PutClientByIdCommand);
+        }
+        [HttpPost("/PutClientById")]
+        public async Task<IActionResult> PutClientById(PutClientByIdCommand putClientByIdCommand, CancellationToken ct)
+        {
+            
+            await _mediator.Send(putClientByIdCommand, ct);
+            string Id = "GetClientById/"+putClientByIdCommand.ClientId.ToString();
+            return RedirectToAction("Clients");
         }
 
         [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]

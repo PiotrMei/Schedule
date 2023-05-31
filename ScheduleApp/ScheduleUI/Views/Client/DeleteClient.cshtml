@@ -1,25 +1,32 @@
-﻿
-@model ScheduleCore.Application.Commands.DeleteCLientByIdCommand
+﻿@model ScheduleCore.Application.Commands.DeleteCLientByIdCommand
 
 <a>Czy napewno chcesz usunąć klienta o Id = @Model.ClientId</a>
+<div>
+	<table>
+		<tr>
+			<td>
+				<form method="post">
 
-<form method="post">
-	<div >
-		
-		<button type="submit" class="btn btn-primary me-3"
-				asp-controller="Client"
-				asp-action="DeleteClient"
-				asp-route-ClientId="@Model.ClientId">
-			Usuń
-		</button>
-	</div>
-</form>
+					<button type="submit" class="btn btn-primary me-3"
+							asp-controller="Client"
+							asp-action="DeleteClient"
+							asp-route-ClientId="@Model.ClientId">
+						Usuń
+					</button>
 
-<form method="Get">
-	<div class="mb-3">
-	<button type="Submit" class="btn btn-primary me-3"
-	asp-controller="Client"
-	asp-action="Clients">
-	Powrót</button>
-	</div>
-</form>
+				</form>
+			</td>
+			<td>
+				<form method="Get">
+
+					<button type="Submit" class="btn btn-primary me-3"
+							asp-controller="Client"
+							asp-action="Clients">
+						Powrót
+					</button>
+
+				</form>
+			</td>
+		</tr>
+	</table>
+</div>
