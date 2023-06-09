@@ -19,10 +19,10 @@ namespace ScheduleUI.Controllers
             _mediator = mediator;
         }
         [HttpGet("/Clients")]
-        public async Task<IActionResult> Clients(CancellationToken ct)
+        public async Task<IActionResult> Clients(GetAllClientsQuery getAllClientsQuery,CancellationToken ct)
         {
-            var request = new GetAllClientsQuery();
-            var response = await _mediator.Send(request, ct);
+            //var request = new GetAllClientsQuery();
+            var response = await _mediator.Send(getAllClientsQuery, ct);
 
             return View(response);
         }

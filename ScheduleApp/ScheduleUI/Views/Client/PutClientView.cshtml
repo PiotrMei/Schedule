@@ -46,9 +46,10 @@
 	<div class="mb-3">
 		<label class="form-label">Numer</label>
 		<input type="text" class="form-control" asp-for="Number" value="@Model.Number"/>
-		<input type="text" asp-for="ClientId" value="@Model.ClientId"/>
+		
 
 	</div>
+	<input type="hidden" asp-for="ClientId" value="@Model.ClientId"/>
 	<div class="mb-3">
 		<button type="submit" class="btn btn-primary me-3"
 				asp-controller="Client"

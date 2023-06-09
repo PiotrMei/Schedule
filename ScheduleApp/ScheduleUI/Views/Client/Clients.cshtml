@@ -1,4 +1,4 @@
-﻿@model List<ScheduleCore.Application.QueryHandlers.ClientInformationDto>
+﻿@model ScheduleCore.Application.QueryHandlers.PageResult<ScheduleCore.Application.QueryHandlers.ClientInformationDto>
 @{
 	ViewData["Title"] = "Klienci";
 }
@@ -38,7 +38,7 @@
 					<a>Numer tel.</a>
 				</th>
 			</tr>
-			@foreach (var item in Model)
+			@foreach (var item in Model.Items)
 			{
 				<tr>
 					<td>

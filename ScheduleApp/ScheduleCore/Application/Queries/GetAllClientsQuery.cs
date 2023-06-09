@@ -9,7 +9,8 @@ using System.Threading.Tasks;
 
 namespace ScheduleCore.Application.Queries
 {
-    public class GetAllClientsQuery :IQuery<List<ClientInformationDto>>
+    public record GetAllClientsQuery(string searchQuery, SortDirection sortDirection,
+        int pageNumber, int pagesize) :IQuery<PageResult<ClientInformationDto>>
     {
     }
 }
