@@ -47,6 +47,10 @@ namespace ScheduleCore.Application.QueryHandlers
             BaseClients = request.sortDirection == SortDirection.Ascending ? BaseClients.OrderBy(o => o.Name) :
                      BaseClients.OrderByDescending(o => o.Name);
             var totalresults = BaseClients.Count();
+            if (pageNumber * pageSize - totalresults >= pageSize)
+            {
+                pageNumber= (int)Math.Ceiling(totalresults / (double)pageSize);
+            }
             var Clients = await BaseClients
                 .Skip(pageSize * (pageNumber - 1))
                 .Take(pageSize)

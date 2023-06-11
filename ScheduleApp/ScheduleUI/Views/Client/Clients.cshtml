@@ -80,3 +80,42 @@
 
 	</div>
 </form>
+<form>
+	<div class="border bg-white">
+
+
+		<table class="table">
+			<tr>
+				<th>
+					<a>Liczba klientów: @Model.TotalResults</a>
+				</th>
+				<th>
+					<a>Liczba stron: @Model.TotalPages</a>
+				</th>
+				<th>
+					@*@Html.DisplayNameFor(m => m[0].PhoneNumber)*@
+					<a>Wyświetlono klientów od: @Model.ItemsFrom do @Model.ItemsTo</a>
+				</th>
+			</tr>
+		</table>
+	</div>
+</form>
+
+<form method="get">
+	<div class="mb-3">
+		<label class="form-label">Strona</label>
+		<input type="text" class="form-control" asp-for="PageNumber" value="@Model.PageNumber"/>
+	</div>
+	<div class="mb-3">
+		<label class="form-label">Ilość pozycji na stronę</label>
+		<input type="text" class="form-control" asp-for="Pagesize" value="@Model.Pagesize"/>
+	</div>
+	<div class="mb-3">
+		<button type="submit" class="btn btn-primary me-3"
+				asp-controller="Client"
+				asp-action="Clients">
+			Dalej
+		</button>
+	</div>
+
+</form>

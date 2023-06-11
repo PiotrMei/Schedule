@@ -16,10 +16,13 @@
             this.PageNumber = pageNumber;
             this.Pagesize = pagesize;
             this.TotalResults = totalResults;
-
             TotalPages = (int)Math.Ceiling(totalResults / (double)pagesize);
             ItemsFrom = ((PageNumber - 1) * Pagesize) + 1;
-            ItemsTo = (ItemsFrom + Pagesize) - 1;
+            ItemsTo = ( PageNumber * Pagesize);
+            if (ItemsTo>TotalResults)
+            {
+                ItemsTo = TotalResults;
+            }
 
         }
     }
